@@ -5,7 +5,7 @@ use std::io::{self, prelude::*, BufReader, Write};
 use std::net::{TcpListener, TcpStream};
 use std::{str, thread};
 
-#[derive(Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 struct Point3D {
     x: u32,
     y: u32,
@@ -40,6 +40,7 @@ fn handle_client(stream: TcpStream) -> io::Result<()> {
         }
 
         let input: Point3D = serde_json::from_slice(&data)?;
+        println!("Received: {:?}", input);
         let value = input.x.pow(2) + input.y.pow(2) + input.z.pow(2);
         let res = serde_json::to_vec(&((value as f64).sqrt()))?;
 
