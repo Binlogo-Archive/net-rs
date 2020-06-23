@@ -1,0 +1,10 @@
+[package]
+name = "tcp-use-mio"
+version = "0.1.0"
+authors = ["Binlogo <binboy@live.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+mio = { version = "0.7", features = ["tcp", "os-poll"] }
